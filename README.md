@@ -1,4 +1,4 @@
-# Module container-registry
+# Module Azure Container Registry
 
 A terraform module that provisions and a docker container registry with the following characteristics:
 
