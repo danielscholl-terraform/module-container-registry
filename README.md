@@ -10,13 +10,15 @@ A terraform module that provisions and a docker container registry with the foll
 
 ```
 module "resource_group" {
-  source   = "github.com/danielscholl/iac-terraform/modules/resource-group"
+  source = "git::https://github.com/danielscholl-terraform/module-resource-group?ref=v1.0.0"
+  
   name     = "iac-terraform"
   location = "eastus2"
 }
 
 module "container_registry" {
-  source              = "../"
+  source = "git::https://github.com/danielscholl-terraform/module-container-registry?ref=v1.0.0"
+  
   name                = substr("iacterraform${module.resource_group.random}", 0, 23)
   resource_group_name = module.resource_group.name
 
