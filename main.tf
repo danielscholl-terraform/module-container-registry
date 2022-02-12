@@ -2,12 +2,18 @@
 # This module allows the creation of a Container Registry
 ##############################################################
 
+resource "random_string" "random" {
+  length  = 5
+  special = false
+  upper   = false
+}
+
 data "azurerm_resource_group" "main" {
   name = var.resource_group_name
 }
 
 resource "azurerm_container_registry" "main" {
-  name                = var.name != null ? var.name : local.name
+  name = (var.name == null ? "${local.name}${random_string.random.result}" : lower(var.name))
   resource_group_name = data.azurerm_resource_group.main.name
   location            = data.azurerm_resource_group.main.location
   sku                 = var.sku
