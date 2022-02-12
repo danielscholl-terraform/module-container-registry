@@ -35,6 +35,7 @@ module "container_registry" {
 |------|---------|
 | azurerm | >= 2.90.0 |
 | null | n/a |
+| random | n/a |
 
 ## Inputs
 
